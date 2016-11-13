@@ -350,7 +350,10 @@ The first one loads the database with films, users and (in-store) boxes.  The se
 No time has been spend on:
 
 - Entity validation
-- Coding tests
+- Automated testing
 - Error handling
--
--
+- Performance testing
+
+And probably much more...
+
+But all requirements can be encoded beautifully, simply and elegantly, provided time and a true love for functional programming :-)
