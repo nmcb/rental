@@ -49,10 +49,9 @@ public class Box implements WithId {
     @Transient @JsonIgnore
     public Box checkout(User user, int nrOfDays) {
         if(!isInStore()) throw new IllegalStateException("not in store");
+        this.checkout = LocalDate.now().minusDays(7).format(ISO8601);
         this.rentedBy = user;
         this.nrOfDays = nrOfDays;
-        // TODO Remove minus 7 days time travel on checkout, testing late charge fee.
-        this.checkout = LocalDate.now().minusDays(7).format(ISO8601);
         return this;
     }
 
