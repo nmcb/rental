@@ -8,37 +8,26 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
 @Entity
-public class Rental {
+public class Box {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Basic(optional = false)
-    private int nrOfDays;
-    @Basic(optional = false)
-    private String checkout;
-    @Basic
-    private String checkin;
-    @ManyToOne
-    private User user;
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Film film;
+    @Basic
+    private int nrOfDays;
+    @Basic
+    private String checkout;
+    @ManyToOne
+    private User rentedBy;
 
-    protected Rental() {}
-
-    public Rental(User user, Film film, int nrOfDays) {
-        this.user = user;
-        this.film = film;
-        this.nrOfDays = nrOfDays;
-        // TODO Remove time travel (testing late charge fee)
-        this.checkout = LocalDate.now().minusDays(7).format(ISO8601);
-        this.checkin = null;
-    }
+    Box() {}
 
     public long getId() {
         return id;
     }
 
-    public User getUser() {
-        return user;
+    public User getRentedBy() {
+        return rentedBy;
     }
 
     public Film getFilm() {
@@ -53,23 +42,31 @@ public class Rental {
         return checkout;
     }
 
-    public String getCheckin() {
-        return checkin;
-    }
-
 
     // Control Flow Logic
 
     @Transient @JsonIgnore
-    public Rental checkin() {
+    public Box checkout(User user, int nrOfDays) {
+        if(!isInStore()) throw new IllegalStateException("not in store");
+        this.rentedBy = user;
+        this.nrOfDays = nrOfDays;
+        // TODO Remove minus 7 days time travel on checkout, testing late charge fee.
+        this.checkout = LocalDate.now().minusDays(7).format(ISO8601);
+        return this;
+    }
+
+    @Transient @JsonIgnore
+    public Box checkin() {
         if (isInStore()) throw new IllegalStateException("not checked out");
-        checkin = LocalDate.now().format(ISO8601);
+        this.checkout = null;
+        this.rentedBy = null;
+        this.nrOfDays = 0;
         return this;
     }
 
     @Transient @JsonIgnore
     public boolean isInStore() {
-        return (checkin != null);
+        return (checkout == null);
     }
 
     @Transient @JsonIgnore
@@ -78,13 +75,8 @@ public class Rental {
     }
 
     @Transient @JsonIgnore
-    public LocalDate getCheckinDate() {
-        return (checkin != null) ? LocalDate.parse(checkin, ISO8601) : null;
-    }
-
-    @Transient @JsonIgnore
     public int getTotalNrOfDays() {
-        return Period.between(getCheckoutDate(), getCheckinDate()).getDays();
+        return Period.between(getCheckoutDate(), LocalDate.now()).getDays();
     }
 
 

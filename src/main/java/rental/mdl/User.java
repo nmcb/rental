@@ -14,7 +14,7 @@ public class User {
     @Basic(optional = false)
     private int bonus;
     @OneToMany @OrderBy("checkout asc")
-    private List<Rental> rentals;
+    private List<Box> boxes;
 
     public Long getId() {
         return id;
@@ -29,8 +29,8 @@ public class User {
     }
 
     @JsonIgnore
-    public List<Rental> getRentals() {
-        return rentals;
+    public List<Box> getBoxes() {
+        return boxes;
     }
 
 

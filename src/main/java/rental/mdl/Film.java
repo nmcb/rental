@@ -14,7 +14,7 @@ public class Film {
     @Basic(optional = false)
     private RentalType type;
     @OneToMany(mappedBy = "film") @OrderBy("checkout asc")
-    private List<Rental> rentals;
+    private List<Box> boxes;
 
 
     public long getId() {
@@ -30,7 +30,7 @@ public class Film {
     }
 
     @JsonIgnore
-    public List<Rental> getRentals() {
-        return rentals;
+    public List<Box> getBoxes() {
+        return boxes;
     }
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Checkin {
     private Long userId;
-    private List<Long> filmIds;
+    private List<Long> boxIds;
 
     Checkin() {}
 
@@ -12,7 +12,7 @@ public class Checkin {
         return userId;
     }
 
-    public List<Long> getFilmIds() {
-        return filmIds;
+    public List<Long> getBoxIds() {
+        return boxIds;
     }
 }

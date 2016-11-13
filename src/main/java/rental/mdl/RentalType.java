@@ -33,9 +33,6 @@ public enum RentalType {
         return label;
     }
 
-
-    // Control Flow Logic
-
     public long chargeFor(int days) {
         return getPrice() + getPrice() * Math.max(days - getOffsetDays(), 0);
     }

@@ -17,13 +17,13 @@ public class Checkout {
     }
 
     public static class Item {
-        private long filmId;
+        private long boxId;
         private int nrOfDays;
 
         Item() {}
 
-        public long getFilmId() {
-            return filmId;
+        public long getBoxId() {
+            return boxId;
         }
 
         public int getNrOfDays() {

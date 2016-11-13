@@ -20,19 +20,19 @@ public class Price {
         return type.chargeFor(nrOfDays);
     }
 
-    public static Price checkout(List<Rental> rentals) {
+    public static Price checkoutPrice(List<Box> boxes) {
         long total = 0;
-        for (Rental rental : rentals) {
-            total += price(rental.getFilm().getType(), rental.getNrOfDays());
+        for (Box box : boxes) {
+            total += price(box.getFilm().getType(), box.getNrOfDays());
         }
         return new Price(total);
     }
 
-    public static Price checkin(List<Rental> rentals) {
+    public static Price checkinPrice(List<Box> boxes) {
         long overdue = 0;
-        for (Rental rental : rentals) {
-            long total = price(rental.getFilm().getType(), rental.getTotalNrOfDays());
-            long paid  = price(rental.getFilm().getType(), rental.getNrOfDays());
+        for (Box box : boxes) {
+            long total = price(box.getFilm().getType(), box.getTotalNrOfDays());
+            long paid  = price(box.getFilm().getType(), box.getNrOfDays());
             overdue += Math.max(total - paid, 0);
         }
         return new Price(overdue);
