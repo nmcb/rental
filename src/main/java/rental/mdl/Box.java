@@ -22,12 +22,10 @@ public class Box implements WithId {
 
     Box() {}
 
+    // Accessors
+
     public long getId() {
         return id;
-    }
-
-    public User getRentedBy() {
-        return rentedBy;
     }
 
     public Film getFilm() {
@@ -42,6 +40,9 @@ public class Box implements WithId {
         return checkout;
     }
 
+    public User getRentedBy() {
+        return rentedBy;
+    }
 
     // Control Flow Logic
 
@@ -63,6 +64,8 @@ public class Box implements WithId {
         this.nrOfDays = 0;
         return this;
     }
+
+    // Derived Properties
 
     @Transient @JsonIgnore
     public boolean isInStore() {

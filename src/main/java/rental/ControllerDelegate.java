@@ -16,6 +16,8 @@ public class ControllerDelegate<T extends WithId> {
         this.inventory = inventory;
     }
 
+    // CRUD Delegation
+
     public ResponseEntity<T> add(@RequestBody T entity) {
         T added = this.inventory.save(entity);
         URI location = ServletUriComponentsBuilder
@@ -33,6 +35,7 @@ public class ControllerDelegate<T extends WithId> {
     }
 
     // Constants
+
     protected static final String BASE    = "";
     protected static final String WITH_ID = "/{id}";
 }

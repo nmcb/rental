@@ -20,6 +20,8 @@ public class UserController {
         this.delegate = new ControllerDelegate<>(users);
     }
 
+    // CRUD Mapping
+
     @RequestMapping(value = ControllerDelegate.BASE, method = RequestMethod.POST)
     public ResponseEntity<User> add(@RequestBody User entity) {
         return delegate.add(entity);

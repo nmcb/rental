@@ -20,6 +20,8 @@ public class FilmController {
         this.delegate = new ControllerDelegate<>(films);
     }
 
+    // CRUD Mapping
+
     @RequestMapping(value = ControllerDelegate.BASE, method = RequestMethod.POST)
     public ResponseEntity<Film> add(@RequestBody Film film) {
         return delegate.add(film);

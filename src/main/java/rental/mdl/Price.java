@@ -5,20 +5,17 @@ import java.util.List;
 public class Price {
     private long total;
 
-    public Price(long total) {
+    private Price(long total) {
         this.total = total;
     }
+
+    // Accessors
 
     public long getTotal() {
         return total;
     }
 
-
     // Calculation
-
-    private static long price(RentalType type, int nrOfDays) {
-        return type.chargeFor(nrOfDays);
-    }
 
     public static Price checkoutPrice(List<Box> boxes) {
         long total = 0;
@@ -36,6 +33,10 @@ public class Price {
             overdue += Math.max(total - paid, 0);
         }
         return new Price(overdue);
+    }
+
+    private static long price(RentalType type, int nrOfDays) {
+        return type.chargeFor(nrOfDays);
     }
 
     // Constants

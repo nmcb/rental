@@ -16,6 +16,7 @@ public class Film implements WithId {
     @OneToMany(mappedBy = "film") @OrderBy("checkout asc")
     private List<Box> boxes;
 
+    // Accessors
 
     public long getId() {
         return id;

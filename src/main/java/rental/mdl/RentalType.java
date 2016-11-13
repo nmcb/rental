@@ -17,6 +17,8 @@ public enum RentalType {
         this.label = label;
     }
 
+    // Accessors
+
     public long getPrice() {
         return price;
     }
@@ -32,6 +34,8 @@ public enum RentalType {
     public String getLabel() {
         return label;
     }
+
+    // Calculation
 
     public long chargeFor(int days) {
         return getPrice() + getPrice() * Math.max(days - getOffsetDays(), 0);

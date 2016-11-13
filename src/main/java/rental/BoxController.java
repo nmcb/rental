@@ -33,6 +33,8 @@ public class BoxController {
         this.users = users;
     }
 
+    // CRUD Mapping
+
     @RequestMapping(value = ControllerDelegate.BASE, method = RequestMethod.POST)
     public ResponseEntity<Box> add(@RequestBody Box box) {
         return delegate.add(box);
@@ -48,8 +50,7 @@ public class BoxController {
         return delegate.findAll();
     }
 
-
-    // Rental Process
+    // Rental Process Mapping
 
     @RequestMapping(value = "/checkout", method = RequestMethod.POST)
     public Price checkout(@RequestBody Checkout request) {
