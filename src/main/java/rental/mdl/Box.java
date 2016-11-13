@@ -8,10 +8,10 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
 @Entity
-public class Box {
+public class Box implements WithId {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Film film;
     @Basic
     private int nrOfDays;

@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class User {
+public class User implements WithId {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Basic(optional = false)
@@ -16,7 +16,7 @@ public class User {
     @OneToMany @OrderBy("checkout asc")
     private List<Box> boxes;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 

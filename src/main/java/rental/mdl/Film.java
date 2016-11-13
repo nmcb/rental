@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Film {
+public class Film implements WithId {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Basic(optional = false)

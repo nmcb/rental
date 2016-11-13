@@ -4,40 +4,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import rental.dal.UserRepository;
+import rental.dal.Users;
 import rental.mdl.User;
 
-import java.net.URI;
 import java.util.List;
 
 @Transactional
 @RestController
 @RequestMapping("/users")
 public class UserController {
-    private final UserRepository users;
+    private ControllerDelegate<User> delegate;
 
     @Autowired
-    UserController(UserRepository users) {
-        this.users = users;
+    UserController(Users users) {
+        this.delegate = new ControllerDelegate<>(users);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    ResponseEntity<User> add(@RequestBody User user) {
-        User added = this.users.save(user);
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentRequest().path("/{id}")
-                .buildAndExpand(added.getId()).toUri();
-        return ResponseEntity.created(location).body(added);
+    @RequestMapping(value = ControllerDelegate.BASE, method = RequestMethod.POST)
+    public ResponseEntity<User> add(@RequestBody User entity) {
+        return delegate.add(entity);
     }
 
-    @RequestMapping("/{id}")
-    public User byId(@PathVariable(value = "id") Long id) {
-        return users.findOne(id);
+    @RequestMapping(value = ControllerDelegate.WITH_ID)
+    public User byId(long id) {
+        return delegate.byId(id);
     }
 
-    @RequestMapping
-    public List<User> all() {
-        return users.findAll();
+    @RequestMapping(value = ControllerDelegate.BASE)
+    public List<User> findAll() {
+        return delegate.findAll();
     }
 }
