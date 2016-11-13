@@ -20,6 +20,8 @@ So without further ado...
 
 The platform is Java 1.8, a spring boot application with a model driven core, `rental.mdl`, repository structured data access layer, `rental.dal`, controller classes that drive the control flow logic `rental` and an additional `api` package that encodes the structure of the data flow.  Lets start with `rental.mdl`.
 
+### Model
+
 The inventory requires films and related entities to be identifiable, thus the interface `WithId`.
 
 ```Java
@@ -37,3 +39,33 @@ Now I hear you say, that's not real UML, and you are right.  I also hear you say
 - The `checkout` date the film was rented.
 - The `nrOfDays` the user estimates that she will return the box.
 - The `user` who rented the film.
+
+And we model two distinct moments when these properties change, one moment when a filmbox checked out:
+
+```java
+@Transient @JsonIgnore
+public Box checkout(User user, int nrOfDays) {
+    if(!isInStore()) throw new IllegalStateException("not in store");
+    this.checkout = LocalDate.now().format(ISO8601);
+    this.rentedBy = user;
+    this.nrOfDays = nrOfDays;
+    return this;
+}
+```
+
+The other when it is checked in:
+
+```java
+@Transient @JsonIgnore
+public Box checkin() {
+    if (isInStore()) throw new IllegalStateException("not checked out");
+    this.checkout = null;
+    this.rentedBy = null;
+    this.nrOfDays = 0;
+    return this;
+}
+```
+
+With this we know enough to model the required relations:
+
+### 
