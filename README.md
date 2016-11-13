@@ -342,3 +342,15 @@ A couple of seconds later the service is up and running, we added three test scr
 ```
 
 The first one loads the database with films, users and (in-store) boxes.  The second one checks a couple of boxes out, the last one checks these boxes back in.  Alternatively you could test and play with a REST client.  I think that's about all, or, at least I think it is time to call it a day.  I'll upload the last bits and go to bed.  Let me know what you think.  Happy Hacking !!!
+
+---
+
+## Disclaimer
+
+No time has been spend on:
+
+- Entity validation
+- Coding tests
+- Error handling
+-
+-
