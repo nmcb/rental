@@ -2,7 +2,7 @@
 
 Thanks for taking the time reviewing this code, thus getting to know me.
 
-As the objective was to asses object oriented analysis, modeling skills, Java coding skills, code structuring and API design, I approached the task from an mostly object oriented point of view.  This took me back a couple of years.  I got hooked on functional programming in 2008, most of my thought has gone into understanding functional analysis, functional modeling, functional code structures and functional API design.  As a result I started to program professionally in Scala and in Haskell to study, I invested about 4 years of time in it this decade.  I'm very interested in functional programming, unfortunately I did not program functionally in Java because I got hooked on Scala years before release 1.8 was out, I thought it would only be fair to tell.
+As the objective was to assess object oriented analysis, modeling skills, Java coding skills, code structuring and API design, I approached the task from an mostly object oriented point of view.  This took me back a couple of years.  I got hooked on functional programming in 2008, most of my thought has gone into understanding functional analysis, functional modeling, functional code structures and functional API design.  As a result I started to program professionally in Scala and in Haskell to study, I invested about 4 years of time in it this decade.  I'm very interested in functional programming, unfortunately I did not program functionally in Java because I got hooked on Scala years before release 1.8 was out, I thought it would only be fair to tell.
 
 No worries though!
 
