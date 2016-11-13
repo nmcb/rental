@@ -1,2 +1,4 @@
-# rental
-A video rental service
+# Rental
+
+Thanks for taking the time reviewing this code.
+
