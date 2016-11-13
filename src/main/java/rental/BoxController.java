@@ -41,7 +41,7 @@ public class BoxController {
     }
 
     @RequestMapping(value = ControllerDelegate.WITH_ID)
-    public Box byId(long id) {
+    public Box byId(@PathVariable(name = "id") Long id) {
         return delegate.byId(id);
     }
 

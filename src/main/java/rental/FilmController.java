@@ -28,7 +28,7 @@ public class FilmController {
     }
 
     @RequestMapping(value = ControllerDelegate.WITH_ID)
-    public Film byId(long id) {
+    public Film byId(@PathVariable(name = "id") Long id) {
         return delegate.byId(id);
     }
 

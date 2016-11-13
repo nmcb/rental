@@ -2,7 +2,6 @@ package rental;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import rental.mdl.WithId;
 
@@ -18,7 +17,7 @@ public class ControllerDelegate<T extends WithId> {
 
     // CRUD Delegation
 
-    public ResponseEntity<T> add(@RequestBody T entity) {
+    public ResponseEntity<T> add(T entity) {
         T added = this.inventory.save(entity);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest().path(WITH_ID)
@@ -26,7 +25,7 @@ public class ControllerDelegate<T extends WithId> {
         return ResponseEntity.created(location).body(added);
     }
 
-    public T byId(long id) {
+    public T byId(Long id) {
         return inventory.findOne(id);
     }
 

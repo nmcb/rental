@@ -28,7 +28,7 @@ public class UserController {
     }
 
     @RequestMapping(value = ControllerDelegate.WITH_ID)
-    public User byId(long id) {
+    public User byId(@PathVariable(name = "id") Long id) {
         return delegate.byId(id);
     }
 

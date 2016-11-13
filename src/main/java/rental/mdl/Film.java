@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 public class Film implements WithId {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     @Basic(optional = false)
     private String name;
     @Basic(optional = false)
@@ -18,7 +18,7 @@ public class Film implements WithId {
 
     // Accessors
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

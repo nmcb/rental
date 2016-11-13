@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 public class User implements WithId {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     @Basic(optional = false)
     private String name;
     @Basic(optional = false)
@@ -16,7 +16,7 @@ public class User implements WithId {
     @OneToMany @OrderBy("checkout asc")
     private List<Box> boxes;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

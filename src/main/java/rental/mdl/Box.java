@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 @Entity
 public class Box implements WithId {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Film film;
     @Basic
@@ -24,7 +24,7 @@ public class Box implements WithId {
 
     // Accessors
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
