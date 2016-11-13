@@ -28,6 +28,12 @@ public interface WithId {
 }
 ```
 
-We model `Film`, `Box` and `User`, all implementing `WithId` as the core entities of our rental application.  A `Film` has a `name`, is of a certain `type` of rental, and can be rented in one-or-more physical `boxes`.  A `Box` with a certain `film` can be `rentedBy` a `User` after it is taken from the inventory on a certain `checkout` date for an estimated `nrOfDays`.  Upon checking out a `Box` with a certain `film` the `User` receives `bonus` points which are stored with the user's `name` so that at any given moment in time one-or-more `boxes` are `rentedBy` a certain `user`.
+We model `Film`, `Box` and `User`, all implementing `WithId` as the core entities of our rental application.  A `Film` has a `name`, is of a certain `type` of rental, and can be rented in one-or-more physical `boxes`.  A `Box` with a certain `film` can be `rentedBy` a `User` after it is taken from the inventory on a certain `checkout` date for an estimated `nrOfDays`.  Upon checking out a `Box` with a certain `film` the `User` receives `bonus` points which are stored with the user's `name` so that at any given moment in time one-or-more `boxes` are `rentedBy` a certain `user`.  A picture tells a hundred words...
 
-A picture tells a hundred words...
+![rental-model](https://raw.githubusercontent.com/nmcb/rental/master/img/rental-model.png)
+
+Now I hear you say, that's not real UML, and you are right.  I also hear you say, what is that `RentalType`, or that `Price`, again, all in good time my friend.  For now lets just focus on the fact that a physical object in this world, a `Box` sits pretty nicely inbetween a `User` and his or her `Film`.  And that we know that a `Box` containing a certain `Film` is rented by a certain `User` when the following three properties of that `Box` are not `null`, or know:
+
+- The `checkout` date the film was rented.
+- The `nrOfDays` the user estimates that she will return the box.
+- The `user` who rented the film.
