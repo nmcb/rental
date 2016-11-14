@@ -58,7 +58,7 @@ public class BoxController {
         List<Box> rentals = new ArrayList<>();
         for (Checkout.Item item : request.getItems()) {
             Box box = boxes.findOne(item.getBoxId()).checkout(user, item.getNrOfDays());
-            user.addBonus(box.getFilm().getType().getBonusPoints());
+            user.addBonus(box.getFilm().getType().BONUS_POINTS);
             rentals.add(box);
         }
         return checkoutPrice(rentals);

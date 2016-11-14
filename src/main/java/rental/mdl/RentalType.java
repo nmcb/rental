@@ -1,43 +1,27 @@
 package rental.mdl;
 
-public enum RentalType {
-    NEW(Price.PREMIUM, 1, 2, "New Release"),
-    REG(Price.BASIC, 3, 1, "Regular Rental"),
-    OLD(Price.BASIC, 5, 1, "Old Film");
+import static java.lang.Math.*;
 
-    private long price;
-    private int offsetDays;
-    private int bonusPoints;
-    private String label;
+@SuppressWarnings(value = "unchecked")
+public enum RentalType {
+
+    NEW  ( Price.PREMIUM,   1,   2,    "New Release" ),
+    REG  (   Price.BASIC,   3,   1, "Regular Rental" ),
+    OLD  (   Price.BASIC,   5,   1,       "Old Film" );
+
+    public final long   PRICE;
+    public final int    OFFSET_DAYS;
+    public final int    BONUS_POINTS;
+    public final String LABEL;
 
     RentalType(long price, int offsetDays, int bonusPoints, String label) {
-        this.price = price;
-        this.offsetDays = offsetDays;
-        this.bonusPoints = bonusPoints;
-        this.label = label;
+        PRICE         = price;
+        OFFSET_DAYS   = offsetDays;
+        BONUS_POINTS  = bonusPoints;
+        LABEL         = label;
     }
-
-    // Accessors
-
-    public long getPrice() {
-        return price;
-    }
-
-    public int getOffsetDays() {
-        return offsetDays;
-    }
-
-    public int getBonusPoints() {
-        return bonusPoints;
-    }
-
-    public String getLabel() {
-        return label;
-    }
-
-    // Calculation
 
     public long chargeFor(int days) {
-        return getPrice() + getPrice() * Math.max(days - getOffsetDays(), 0);
+        return PRICE + PRICE * max(days - OFFSET_DAYS, 0);
     }
 }
